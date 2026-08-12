@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ishan Maitra | Cloud & AI Systems Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <style>
+    :root {
+      --bg-main: #070709;
+      --bg-surface: #0e0e12;
+      --bg-card: rgba(18, 18, 24, 0.7);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-accent: rgba(212, 175, 55, 0.3);
+      --accent-gold: #d4af37;
+      --accent-gold-light: #f3e5ab;
+      --accent-glow: rgba(212, 175, 55, 0.15);
+      --text-primary: #f0f0f5;
+      --text-secondary: #9a9ab0;
+      --text-muted: #626273;
+      --font-sans: 'Plus Jakarta Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      background-image: radial-gradient(circle at 15% 15%, var(--accent-glow) 0%, transparent 40%),
+                        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 100% 100%, 40px 40px;
+    }
+
+    header {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+      backdrop-filter: blur(16px); background: rgba(7, 7, 9, 0.8);
+      border-bottom: 1px solid var(--border-color);
+      padding: 1rem 2rem; display: flex; justify-space-between; align-items: center;
+    }
+
+    .brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .brand-logo {
+      width: 36px; height: 36px; background: linear-gradient(135deg, var(--accent-gold), #8a6d1c);
+      border-radius: 8px; display: grid; place-items: center; font-family: var(--font-mono); font-weight: 700; color: #000;
+    }
+
+    .btn-resume {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(212, 175, 55, 0.12); border: 1px solid var(--border-accent);
+      color: var(--accent-gold-light); padding: 0.5rem 1rem; border-radius: var(--radius-sm);
+      text-decoration: none; font-size: 0.85rem; font-family: var(--font-mono); transition: all 0.2s;
+    }
+    .btn-resume:hover { background: var(--accent-gold); color: #000; }
+
+    .hero { padding: 8rem 2rem 3rem; max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 2rem; }
+    .hero-title { font-size: 3rem; font-weight: 700; line-height: 1.1; margin-bottom: 1rem; }
+
+    .ai-console-grid {
+      display: grid; grid-template-columns: 320px 1fr; gap: 1.5rem;
+      background: var(--bg-surface); border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg); overflow: hidden; max-width: 1280px; margin: 0 auto 4rem;
+    }
+
+    .ai-sidebar { background: rgba(14, 14, 18, 0.95); border-right: 1px solid var(--border-color); padding: 1.5rem; }
+    .chip-btn {
+      width: 100%; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color);
+      color: var(--text-secondary); padding: 0.65rem 0.9rem; border-radius: var(--radius-sm);
+      font-size: 0.82rem; text-align: left; cursor: pointer; margin-bottom: 0.5rem; transition: all 0.2s;
+    }
+    .chip-btn:hover { background: rgba(212, 175, 55, 0.08); border-color: var(--border-accent); color: var(--accent-gold-light); }
+
+    .ai-chat-container { display: flex; flex-direction: column; height: 550px; }
+    .chat-messages { flex: 1; padding: 1.5rem; overflow-y: auto; display: flex; flex-direction: column; gap: 1rem; }
+    .message { max-width: 85%; padding: 1rem; border-radius: var(--radius-md); font-size: 0.9rem; }
+    .message.user { align-self: flex-end; background: rgba(212, 175, 55, 0.15); border: 1px solid rgba(212, 175, 55, 0.3); }
+    .message.assistant { align-self: flex-start; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); }
+
+    .chat-input-area { padding: 1rem; border-top: 1px solid var(--border-color); display: flex; gap: 0.75rem; }
+    .input-field {
+      flex: 1; background: rgba(0, 0, 0, 0.4); border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm); padding: 0.6rem 0.8rem; color: #fff; font-family: var(--font-mono); outline: none;
+    }
+    .btn-send { background: var(--accent-gold); color: #000; font-weight: 600; border: none; padding: 0 1.5rem; border-radius: var(--radius-sm); cursor: pointer; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="https://ishanmaitra.github.io/ishanmaitra/ishan.jpeg" class="brand">
+      <div class="brand-logo">IM</div>
+      <div>
+        <span style="font-size: 1rem; font-weight: 700;">ISHAN MAITRA</span>
+        <span style="display: block; font-size: 0.7rem; color: var(--accent-gold); font-family: var(--font-mono);">AI & Cloud Systems Engineer</span>
+      </div>
+    </a>
+    <div style="display: flex; gap: 1rem; align-items: center;">
+      <!-- Direct Resume PDF Download Link -->
+      <a href="/resume.pdf" download="Ishan_Maitra_Resume.pdf" class="btn-resume">
+        📥 Download Resume (PDF)
+      </a>
+      <a href="/resume.pdf" target="_blank" class="btn-resume" style="background: transparent;">
+        👁️ View PDF
+      </a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div>
+      <div style="font-family: var(--font-mono); color: var(--accent-gold); font-size: 0.85rem; margin-bottom: 0.5rem;">// GROUNDED CANDIDATE INTELLIGENCE ENGINE</div>
+      <h1 class="hero-title">A Intelligent Dashboard Built for Recruiters.</h1>
+      <p style="color: var(--text-secondary);">Query my backend AI system directly. Powered by Gemini streaming over server-sent events, fully anchored to my actual resume and verified code repositories[cite: 1].</p>
+    </div>
+  </section>
+
+  <!-- Console Section -->
+  <div class="ai-console-grid">
+    <div class="ai-sidebar">
+      <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.75rem;">HR PRESET QUESTIONS</div>
+      <button class="chip-btn" onclick="sendPreset('What are Ishan\'s top technical strengths?')">⚡ Top Technical Strengths</button>
+      <button class="chip-btn" onclick="sendPreset('What are Ishan\'s non-technical weaknesses?')">⚖️ Non-Technical Weaknesses</button>
+      <button class="chip-btn" onclick="sendPreset('Explain the MNCS Gesture Control project architecture.')">🖐️ MNCS Gesture Control OS</button>
+      <button class="chip-btn" onclick="sendPreset('Give me links to Ishan\'s top GitHub repositories.')">📂 GitHub Repositories</button>
+    </div>
+
+    <div class="ai-chat-container">
+      <div class="chat-messages" id="chat-messages">
+        <div class="message assistant">
+          Hello! I am Ishan's AI Assistant, running directly from his backend server. Ask me anything regarding Ishan's technical skill set, weaknesses, or project codebases[cite: 1]!
+        </div>
+      </div>
+      <div class="chat-input-area">
+        <input type="text" id="user-input" class="input-field" placeholder="Type your interview question..." onkeypress="if(event.key==='Enter') sendMessage()">
+        <button class="btn-send" onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function sendPreset(text) {
+      document.getElementById('user-input').value = text;
+      sendMessage();
+    }
+
+    async function sendMessage() {
+      const inputEl = document.getElementById('user-input');
+      const text = inputEl.value.trim();
+      if (!text) return;
+
+      const chatContainer = document.getElementById('chat-messages');
+
+      // User Message UI
+      const userMsg = document.createElement('div');
+      userMsg.className = 'message user';
+      userMsg.textContent = text;
+      chatContainer.appendChild(userMsg);
+
+      inputEl.value = '';
+
+      // Assistant Message UI Placeholder
+      const assistantMsg = document.createElement('div');
+      assistantMsg.className = 'message assistant';
+      assistantMsg.innerHTML = '<i>Thinking...</i>';
+      chatContainer.appendChild(assistantMsg);
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+
+      try {
+        const response = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: text })
+        });
+
+        const reader = response.body.getReader();
+        const decoder = new TextDecoder();
+        assistantMsg.innerHTML = '';
+
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+
+          const chunk = decoder.decode(value, { stream: true });
+          const lines = chunk.split('\n');
+
+          for (const line of lines) {
+            if (line.startsWith('data: ')) {
+              const rawData = line.substring(6).trim();
+              if (rawData === '[DONE]') break;
+              try {
+                const parsed = JSON.parse(rawData);
+                if (parsed.text) {
+                  assistantMsg.innerHTML += parsed.text.replace(/\n/g, '<br>');
+                  chatContainer.scrollTop = chatContainer.scrollHeight;
+                }
+              } catch (e) {}
+            }
+          }
+        }
+      } catch (err) {
+        assistantMsg.textContent = "Error connecting to backend server.";
+      }
+    }
+  </script>
+</body>
+</html>
